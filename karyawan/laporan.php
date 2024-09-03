@@ -86,167 +86,19 @@ if (!isset($_SESSION['nama'])) {
                 <div class="container-fluid px-5">
                     <h1 class="mt-4">Dashboard</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">- Kelola Produk -</li>
+                        <li class="breadcrumb-item active">- Laporan Produk -</li>
                     </ol>
 
-                    <div class="row first">
-                        <div class="col-9"></div>
+                    <div class="row laporan">
                         <div class="col-3">
-                            <div class="trigger" data-bs-toggle="modal" data-bs-target="#tambahkeun">
-                                <i class="bi bi-plus-square"></i>
-                                <div class="txt">
-                                    Tambah Produk
-                                </div>
-                            </div>
+                            
                         </div>
-                    </div>
-                    <div class="row product">
-
-                        <?php while($product = mysqli_fetch_array($products)) : ?>
-                        <div class="col-3">
-                            <div class="img-content">
-                                <img src="../uploads/<?= $product['gambar'] ?>">
-                            </div>
-                            <div class="contain">
-                                <div class="main">
-                                    <div class="main-context">
-                                        <div class="nama">
-                                            <?= $product['nama'] ?>
-                                        </div>
-                                        <div class="stok">
-                                            Stok tersisa : <span><?= $product['stok'] ?></span> pcs
-                                        </div>
-                                    </div>
-                                    <div class="harga">
-                                        Rp. <?= $product['harga'] ?>
-                                    </div>
-                                </div>
-                                <div class="act">
-                                    <div class="edit" data-bs-toggle="modal" data-bs-target="#editz<?= $product['id'] ?>">
-                                        <i class="bi bi-pencil-square"></i>
-                                        <!-- <div class="txt">Edit</div> -->
-                                    </div>
-                                    <div class="hapustombol" id="<?= $product['id'] ?>">
-                                        <i class="bi bi-trash3"></i>
-                                        <!-- <div class="txt">Edit</div> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Modal Edit -->
-                        <div class="modal fade" id="editz<?= $product['id'] ?>" tabindex="-1" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Data <?= $product['nama'] ?></h1>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="update-produk.php" method="post" enctype="multipart/form-data">
-                                            <input type="hidden" name="id" value="<?= $product['id'] ?>">
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">Nama Produk</label>
-                                                <input type="text" class="form-control" name="nama" placeholder="nama produk.." required value="<?= $product['nama'] ?>">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">Kode Produk</label>
-                                                <input type="text" class="form-control" name="kode" placeholder="kode produk.."required value="<?= $product['kode'] ?>">
-                                            </div>
-                                            <div class="mb-3 special">
-                                                <label for="exampleFormControlInput1" class="form-label">Harga Produk</label>
-                                                <div class="numeric">
-                                                    <div class="harga">
-                                                        Rp.
-                                                    </div>
-                                                    <input type="number" class="form-control" name="harga" placeholder="harga produk.."required value="<?= $product['harga'] ?>">
-                                                </div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">Stok</label>
-                                                <input type="number" class="form-control" name="stok" placeholder="stok produk.."required value="<?= $product['stok'] ?>">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlInput1" class="form-label">gambar Produk</label>
-                                                <input type="file" name="gambar" accept="image/jpg, image/jpeg, image/png" class="form-control" id="exampleFormControlInput1">
-                                            </div>
-                                            <div class="mb-2 mt-4">
-                                                <button type="submit" class="add">
-                                                    Update
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Modal Edit -->
-                        <?php endwhile; ?>
                     </div>
                 </div>
             </main>
-            <!-- MAIN SECTION -->
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; NovaMart 2024</div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            &middot;
-                            <a href="#">Terms &amp; Conditions</a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+
         </div>
     </div>
-
-    <!-- Modal Tambah -->
-    <div class="modal fade" id="tambahkeun" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Produk</h1>
-                </div>
-                <div class="modal-body">
-                    <form action="tambah-produk.php" method="post" enctype="multipart/form-data">
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Nama Produk</label>
-                            <input type="text" class="form-control" name="nama" placeholder="nama produk.." required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Kode Produk</label>
-                            <input type="text" class="form-control" name="kode" placeholder="kode produk.."required>
-                        </div>
-                        <div class="mb-3 special">
-                            <label for="exampleFormControlInput1" class="form-label">Harga Produk</label>
-                            <div class="numeric">
-                                <div class="harga">
-                                    Rp.
-                                </div>
-                                <input type="number" class="form-control" name="harga" placeholder="harga produk ($)"required>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Stok</label>
-                            <input type="number" class="form-control" name="stok" placeholder="stok produk.."required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">gambar Produk</label>
-                            <input type="file" name="gambar" accept="image/jpg, image/jpeg, image/png" class="form-control" id="exampleFormControlInput1" required>
-                        </div>
-                        <div class="mb-2 mt-4">
-                            <button type="submit" class="add">
-                                Tambah
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!-- Modal Tambah -->
 
     </div>
 
