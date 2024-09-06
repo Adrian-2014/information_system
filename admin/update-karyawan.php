@@ -12,10 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $no_telp = $_POST['no_telp'];
-    $kantor = 'kenjeran';
 
     // Update data produk termasuk gambar baru
-    $sql = "UPDATE karyawan SET nama='$nama', usia='$usia', email='$email', kode='$password', nomor_telepon='$no_telp', kantor='$kantor' WHERE id='$id'";
+    $sql = "UPDATE karyawan SET nama='$nama', usia='$usia', email='$email', password='$password', nomor_telepon='$no_telp' WHERE id='$id'";
 
     // Jalankan query untuk update data
     if (mysqli_query($connect, $sql)) {

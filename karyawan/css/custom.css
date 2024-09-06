@@ -61,107 +61,114 @@ html {
                 justify-content: center;
 
                 .col-3 {
-                    padding: 0 !important;
-                    overflow: hidden;
-                    display: flex;
-                    flex-direction: column;
-                    margin: 1rem;
-                    /* gap: .5rem; */
-                    border-radius: 1.5rem;
-                    box-shadow: 0px 0px 10px rgb(173, 173, 173);
-                    transition: .3s ease;
+                    padding: .75rem;
 
-                    .img-content {
-                        max-height: 13rem;
-                        width: 100%;
+                    .item {
+                        padding: 0 !important;
                         overflow: hidden;
-
-                        img {
-                            width: 100%;
-                            height: auto;
-                            overflow: hidden;
-                        }
-                    }
-
-                    .contain {
-                        padding: .5rem 1rem;
                         display: flex;
-                        align-items: center;
-                        justify-content: space-between;
-                        gap: .5rem;
-                        background-color: white;
+                        flex-direction: column;
+                        /* margin: 1rem; */
+                        /* gap: .5rem; */
+                        border-radius: 1.2rem;
+                        box-shadow: 0px 0px 10px rgb(173, 173, 173);
+                        transition: .3s ease;
 
-                        .main {
+                        .img-content {
+                            max-height: 13rem;
+                            width: 100%;
+                            overflow: hidden;
+
+                            img {
+                                width: 100%;
+                                height: auto;
+                                overflow: hidden;
+                            }
+                        }
+
+                        .contain {
+                            padding: .3rem .75rem;
                             display: flex;
-                            flex-direction: column;
+                            align-items: center;
+                            justify-content: space-between;
                             gap: .5rem;
-                            /* justify-content: space-between; */
+                            background-color: white;
 
-                            .main-context {
+                            .main {
                                 display: flex;
                                 flex-direction: column;
+                                gap: .35rem;
+                                /* justify-content: space-between; */
 
-                                .nama {
-                                    font-weight: 500;
-                                    font-size: 1.3rem;
-                                    line-height: 1.3;
+                                .main-context {
+                                    display: flex;
+                                    flex-direction: column;
 
-                                }
+                                    .nama {
+                                        font-weight: 500;
+                                        font-size: 1.1rem;
+                                        line-height: 1.3;
 
-                                .stok {
-                                    line-height: 1;
-                                    font-size: .9rem;
-                                    color: rgba(0, 0, 0, 0.6);
+                                    }
 
-                                    span {
-                                        color: rgba(0, 0, 0, 0.8);
-                                        font-weight: 600;
+                                    .stok {
+                                        line-height: 1;
+                                        font-size: .85rem;
+                                        color: rgba(0, 0, 0, 0.6);
+
+                                        span {
+                                            color: rgba(0, 0, 0, 0.8);
+                                            font-weight: 600;
+                                        }
                                     }
                                 }
+
+                                .harga {
+                                    font-weight: bold;
+                                    font-size: 1.15rem;
+                                    color: rgba(0, 0, 0, 0.8);
+                                }
+
                             }
 
-                            .harga {
-                                font-weight: bold;
-                                font-size: 1.3rem;
-                                color: rgba(0, 0, 0, 0.8);
-                            }
-
-                        }
 
 
-
-                        .act {
-                            padding: .5rem 0;
-                            display: flex;
-                            flex-direction: column;
-                            align-items: center;
-                            gap: .5rem;
-
-                            .edit {
+                            .act {
+                                padding: .5rem 0rem;
                                 display: flex;
+                                /* flex-direction: column; */
+                                align-self: flex-end;
                                 align-items: center;
-                                justify-content: center;
-                                border-radius: .35rem;
-                                height: 2.2rem;
-                                width: 2.2rem;
-                                color: white;
+                                gap: .5rem;
+                                /* background-color: red; */
 
-                                background-color: rgb(0, 170, 255);
-                            }
+                                .edit {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    border-radius: .35rem;
+                                    height: 2rem;
+                                    width: 2rem;
+                                    color: white;
 
-                            .hapustombol {
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                border-radius: .35rem;
-                                height: 2.2rem;
-                                width: 2.2rem;
-                                color: white;
+                                    background-color: rgb(0, 170, 255);
+                                }
 
-                                background-color: rgb(255, 0, 0);
+                                .hapustombol {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    border-radius: .35rem;
+                                    height: 2rem;
+                                    width: 2rem;
+                                    color: white;
+
+                                    background-color: rgb(255, 0, 0);
+                                }
                             }
                         }
                     }
+
                 }
 
                 .col-2:hover {
@@ -218,7 +225,8 @@ html {
                             padding: .5rem 1rem;
                             border-radius: .3rem;
                             border: none;
-                            background-color: rgb(0, 153, 255);
+                            background: linear-gradient(to bottom right, var(--main1), var(--main2));
+
                         }
                     }
                 }

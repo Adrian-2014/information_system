@@ -11,7 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $kode = $_POST['kode'];
     $harga = $_POST['harga'];
     $stok = $_POST['stok'];
-    $tempat = "kenjeran"; // Atau bisa ambil dari form jika bisa diubah
 
     // Proses upload gambar jika ada file yang diupload
     if (isset($_FILES['gambar']) && $_FILES['gambar']['error'] == UPLOAD_ERR_OK) {
@@ -38,14 +37,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 
             // Update data produk termasuk gambar baru
-            $sql = "UPDATE produk SET nama='$nama', kode='$kode', harga='$harga', stok='$stok', gambar='$gambar_baru', tempat='$tempat' WHERE id='$id'";
+            $sql = "UPDATE produk SET nama='$nama', kode='$kode', harga='$harga', stok='$stok', gambar='$gambar_baru' WHERE id='$id'";
         } else {
             echo "Gagal mengupload gambar.";
             exit;
         }
     } else {
         // Update data produk tanpa mengubah gambar
-        $sql = "UPDATE produk SET nama='$nama', kode='$kode', harga='$harga', stok='$stok', tempat='$tempat' WHERE id='$id'";
+        $sql = "UPDATE produk SET nama='$nama', kode='$kode', harga='$harga', stok='$stok' WHERE id='$id'";
     }
 
     // Jalankan query untuk update data

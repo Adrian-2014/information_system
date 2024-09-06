@@ -27,9 +27,9 @@ if (!isset($_SESSION['nama'])) {
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Dashboard - Karyawan</title>
-    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <link href="css/custom.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.min.css">
@@ -42,7 +42,7 @@ if (!isset($_SESSION['nama'])) {
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <div class="greet">
-            <?php echo $_SESSION['nama']; ?>
+            <?= $_SESSION['nama'] ?>
         </div>
 
         <div class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0"></div>
@@ -104,31 +104,33 @@ if (!isset($_SESSION['nama'])) {
 
                         <?php while($product = mysqli_fetch_array($products)) : ?>
                         <div class="col-3">
-                            <div class="img-content">
-                                <img src="../uploads/<?= $product['gambar'] ?>">
-                            </div>
-                            <div class="contain">
-                                <div class="main">
-                                    <div class="main-context">
-                                        <div class="nama">
-                                            <?= $product['nama'] ?>
-                                        </div>
-                                        <div class="stok">
-                                            Stok tersisa : <span><?= $product['stok'] ?></span> pcs
-                                        </div>
-                                    </div>
-                                    <div class="harga">
-                                        Rp. <?= $product['harga'] ?>
-                                    </div>
+                            <div class="item">
+                                <div class="img-content">
+                                    <img src="../uploads/<?= $product['gambar'] ?>">
                                 </div>
-                                <div class="act">
-                                    <div class="edit" data-bs-toggle="modal" data-bs-target="#editz<?= $product['id'] ?>">
-                                        <i class="bi bi-pencil-square"></i>
-                                        <!-- <div class="txt">Edit</div> -->
+                                <div class="contain">
+                                    <div class="main">
+                                        <div class="main-context">
+                                            <div class="nama">
+                                                <?= $product['nama'] ?>
+                                            </div>
+                                            <div class="stok">
+                                                Stok tersisa : <span><?= $product['stok'] ?></span> pcs
+                                            </div>
+                                        </div>
+                                        <div class="harga">
+                                            Rp. <?= $product['harga'] ?>
+                                        </div>
                                     </div>
-                                    <div class="hapustombol" id="<?= $product['id'] ?>">
-                                        <i class="bi bi-trash3"></i>
-                                        <!-- <div class="txt">Edit</div> -->
+                                    <div class="act">
+                                        <div class="edit" data-bs-toggle="modal" data-bs-target="#editz<?= $product['id'] ?>">
+                                            <i class="bi bi-pencil-square"></i>
+                                            <!-- <div class="txt">Edit</div> -->
+                                        </div>
+                                        <div class="hapustombol" id="<?= $product['id'] ?>">
+                                            <i class="bi bi-trash3"></i>
+                                            <!-- <div class="txt">Edit</div> -->
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -211,7 +213,7 @@ if (!isset($_SESSION['nama'])) {
                                 <div class="harga">
                                     Rp.
                                 </div>
-                                <input type="number" class="form-control" name="harga" placeholder="harga produk ($)"required>
+                                <input type="number" class="form-control" name="harga" placeholder="harga produk.."required>
                             </div>
                         </div>
                         <div class="mb-3">

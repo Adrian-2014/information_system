@@ -10,9 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $no_telp = $_POST['no_telp'];
-    $kantor = 'kenjeran';
 
-    $sql = "INSERT INTO karyawan (nama, usia, email, kode, nomor_telepon, kantor) VALUES ('$nama', '$usia', '$email', '$password', '$no_telp', '$kantor')";
+    $sql = "INSERT INTO karyawan (nama, usia, email, password, nomor_telepon) VALUES ('$nama', '$usia', '$email', '$password', '$no_telp')";
 
     if (mysqli_query($connect, $sql)) {
         $_SESSION['message'] = 'Karyawan berhasil ditambahkan!';

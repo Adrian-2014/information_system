@@ -9,7 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $kode = $_POST['kode'];
     $harga = $_POST['harga'];
     $stok = $_POST['stok'];
-    $tempat = 'kenjeran';
 
     $target_dir = '../uploads/';
     $gambar_asli = basename($_FILES['gambar']['name']);
@@ -20,8 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (move_uploaded_file($_FILES['gambar']['tmp_name'], $target_file)) {
         // Insert data ke database
-        $sql = "INSERT INTO produk (nama, kode, harga, stok, gambar, tempat)
-                VALUES ('$nama', '$kode', '$harga', '$stok', '$gambar_baru', '$tempat')";
+        $sql = "INSERT INTO produk (nama, kode, harga, stok, gambar)
+                VALUES ('$nama', '$kode', '$harga', '$stok', '$gambar_baru')";
 
         if (mysqli_query($connect, $sql)) {
             $_SESSION['message'] = 'Produk berhasil ditambahkan!';

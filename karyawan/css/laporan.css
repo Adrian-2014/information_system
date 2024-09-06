@@ -1,0 +1,202 @@
+:root {
+    --main1: rgb(0, 162, 255);
+    --main2: rgb(0, 223, 226);
+}
+
+*,
+body,
+html {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+.mains {
+    main {
+        .container-fluid {
+            .first {
+                .col-3 {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+
+                    .trigger {
+                        cursor: pointer;
+                        background: linear-gradient(to bottom right, var(--main1), var(--main2));
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: .6rem;
+                        padding: .5rem 1.5rem;
+                        border-radius: .5rem;
+                        transition: .3s ease;
+                        width: auto;
+                    }
+
+                    .trigger:hover {
+                        box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.2);
+                    }
+
+                }
+            }
+
+        }
+    }
+}
+
+.greet {
+    margin: 0 .7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.modal {
+    .modal-dialog {
+        .modal-content {
+            .modal-header {}
+
+            .modal-body {
+                form {
+                    .special {
+                        .for-produk {
+                            display: flex;
+                            gap: 0;
+                            align-items: center;
+
+                            .form-control {
+                                width: 92% !important;
+                                height: auto;
+                                border-top-right-radius: 0 !important;
+                                border-bottom-right-radius: 0 !important;
+
+                            }
+
+                            .dropdown {
+                                .btn {
+                                    width: 2.5rem;
+                                    /* height: ; */
+                                    /* height: 1rem; */
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    border-top-left-radius: 0 !important;
+                                    border-bottom-left-radius: 0 !important;
+                                    background: linear-gradient(to bottom right, var(--main1), var(--main2));
+
+                                    border: none;
+                                    outline: none;
+                                }
+
+                                .btn::after {
+                                    display: none;
+                                }
+
+                                .dropdown-menu {
+                                    width: 29rem;
+                                    /* transform: translateX(-26.7rem) !important; */
+                                    transform: translate(-26.7rem, 2.5rem) !important;
+                                    /* transform: translateY(3rem) !important; */
+                                    height: 10rem;
+                                    overflow: auto;
+
+                                    padding: .3rem 0 !important;
+
+                                    li {
+                                        height: 2.65rem;
+                                        padding: .15rem .3rem;
+
+                                        .item {
+                                            display: flex;
+                                            gap: .5rem;
+                                            align-items: center;
+
+                                            .img-content {
+                                                height: 2.5rem;
+                                                overflow: hidden;
+
+                                                img {
+                                                    height: 2.5rem;
+                                                    max-height: 2.5rem;
+                                                    width: auto;
+                                                }
+                                            }
+
+                                            .name {
+                                                font-weight: bold;
+                                            }
+                                        }
+                                    }
+
+                                    li:first-of-type {
+
+                                        .item {
+                                            border-top-left-radius: .25rem;
+                                            overflow: hidden;
+                                        }
+                                    }
+
+                                    li:last-of-type {
+
+                                        .item {
+                                            border-bottom-left-radius: .25rem;
+                                            overflow: hidden;
+                                        }
+                                    }
+
+                                }
+                            }
+
+                        }
+                    }
+
+                    .mt-3 {
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-end;
+
+                        .add {
+                            color: white;
+                            padding: .5rem 1rem;
+                            border-radius: .3rem;
+                            border: none;
+                            background: linear-gradient(to bottom right, var(--main1), var(--main2));
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#datatablesSimple {
+    tbody {
+        tr {
+            td {
+                img {
+                    height: 2rem;
+                    width: auto;
+                    border-radius: .25rem;
+                    border: 1px solid rgb(104, 104, 104);
+                }
+
+                .see {
+                    height: 2rem;
+                    width: 2rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: rgb(0, 123, 255);
+                    color: white;
+                    border-radius: .25rem;
+                }
+            }
+        }
+    }
+}
