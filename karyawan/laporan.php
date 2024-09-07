@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['nama'])) {
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'karyawan'){
     header('Location: ../index.php');
     exit();
 }
@@ -89,7 +89,7 @@ $laporan = mysqli_query($connect, 'SELECT * FROM laporan ORDER BY id DESC');
                 <div class="container-fluid px-5">
                     <h1 class="mt-4">Laporan</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">- Laporan Produk -</li>
+                        <li class="breadcrumb-item active">- Laporan Harian -</li>
                     </ol>
 
                     <div class="row first">
@@ -101,12 +101,6 @@ $laporan = mysqli_query($connect, 'SELECT * FROM laporan ORDER BY id DESC');
                                     Buat Laporan
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="row laporan">
-                        <div class="col-3">
-
                         </div>
                     </div>
 

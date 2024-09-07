@@ -9,7 +9,7 @@ $products = mysqli_query($connect, 'SELECT * FROM produk ORDER BY id DESC');
 <?php
 session_start();
 
-if (!isset($_SESSION['nama'])) {
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'karyawan'){
     header('Location: ../index.php');
     exit();
 }

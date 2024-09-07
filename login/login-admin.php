@@ -11,14 +11,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = mysqli_query($connect, $sql);
 
     if (mysqli_num_rows($result) == 1) {
-        $_SESSION['admin'] = $email;
+        $admin = mysqli_fetch_assoc($result);
+        $_SESSION['nama'] = $admin['nama'];
+        $_SESSION['id'] = $admin['id'];
+        $_SESSION['role'] = 'admin';
         $_SESSION['message'] = "Login berhasil sebagai Admin!";
         $_SESSION['type'] = "success";
         header("Location: ../admin/index.php");
     } else {
         $_SESSION['message'] = "Login gagal. Email atau password salah.";
         $_SESSION['type'] = "error";
-        header("Location: index.php");
+        header("Location: ../index.php");
     }
     exit;
 }

@@ -15,6 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = mysqli_fetch_assoc($result);
         $_SESSION['nama'] = $user['nama'];
         $_SESSION['id'] = $user['id'];
+        $_SESSION['role'] = 'karyawan';
         $_SESSION['message'] = "Login berhasil sebagai Karyawan!";
         $_SESSION['type'] = "success";
         header("Location: ../karyawan/index.php");

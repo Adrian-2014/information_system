@@ -1,6 +1,12 @@
 <?php
 session_start();
+
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin'){
+    header('Location: ../index.php');
+    exit();
+}
 ?>
+
 
 <?php
 include '../conn.php';
@@ -34,6 +40,9 @@ $karyawan = mysqli_query($connect, 'SELECT * FROM karyawan ORDER BY id DESC');
         <a class="navbar-brand ps-3" href="index.html">Nova Mart</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+        <div class="greet">
+            <?= $_SESSION['nama'] ?>
+        </div>
 
         <div class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0"></div>
         <!-- Navbar-->
@@ -52,9 +61,13 @@ $karyawan = mysqli_query($connect, 'SELECT * FROM karyawan ORDER BY id DESC');
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Utama</div>
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="index.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
+                        </a>
+                        <a class="nav-link" href="laporan.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-file-word"></i></div>
+                            Laporan
                         </a>
                     </div>
                 </div>
@@ -65,9 +78,9 @@ $karyawan = mysqli_query($connect, 'SELECT * FROM karyawan ORDER BY id DESC');
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Dashboard</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">Dashboard</li>
+                        <li class="breadcrumb-item active">- Data Karyawan -</li>
                     </ol>
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-lg-6 col-md-6">
                             <div class="card bg-primary text-white mb-4">
                                 <div class="card-body">Daftar Produk Nova Mart</div>
@@ -86,7 +99,7 @@ $karyawan = mysqli_query($connect, 'SELECT * FROM karyawan ORDER BY id DESC');
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="tambahkan">
                         <div class="trigger" data-bs-toggle="modal" data-bs-target="#tambahkeun">
                             <i class="bi bi-plus-square"></i>
@@ -108,7 +121,7 @@ $karyawan = mysqli_query($connect, 'SELECT * FROM karyawan ORDER BY id DESC');
                                         <th>Usia</th>
                                         <th>Email</th>
                                         <th>No. Telephone</th>
-                                        <th>Tanggal Bergabung</th>
+                                        <th>Tanggal / Waktu Bergabung</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -118,18 +131,21 @@ $karyawan = mysqli_query($connect, 'SELECT * FROM karyawan ORDER BY id DESC');
                                         <th>Usia</th>
                                         <th>Email</th>
                                         <th>No. Telephone</th>
-                                        <th>Tanggal Bergabung</th>
+                                        <th>Tanggal / Waktu Bergabung</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
-                                    <?php while($work = mysqli_fetch_array($karyawan)) : ?>
+                                    <?php while($work = mysqli_fetch_array($karyawan)) :
+
+                                        $start = new DateTime($work['tanggal_ditambahkan'])
+                                        ?>
                                     <tr>
                                         <td><?= $work['nama'] ?></td>
                                         <td><?= $work['usia'] ?> Tahun</td>
                                         <td><?= $work['email'] ?></td>
                                         <td><?= $work['nomor_telepon'] ?></td>
-                                        <td><?= $work['tanggal_ditambahkan'] ?></td>
+                                        <td><?= $start->format('d F Y - H:i') ?></td>
                                         <td>
                                             <div class="special">
                                                 <div class="editz" data-bs-toggle="modal" data-bs-target="#editz<?= $work['id'] ?>">
@@ -189,18 +205,6 @@ $karyawan = mysqli_query($connect, 'SELECT * FROM karyawan ORDER BY id DESC');
                     </div>
                 </div>
             </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; NovaMart 2024</div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            &middot;
-                            <a href="#">Terms &amp; Conditions</a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
         </div>
     </div>
 
