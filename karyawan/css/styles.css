@@ -105,6 +105,30 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.sb-sidenav-menu {
+  background-color: rgba(20, 172, 232, 0.841) !important;
+}
+
+.sb-topnav.navbar {
+  background-color: rgba(20, 172, 232, 0.841) !important;
+}
+
+.nav-link {
+  color: white !important;
+}
+
+.sb-sidenav-menu-heading {
+  color: white !important;
+}
+
+.sb-nav-link-icon {
+  color: white !important;
+}
+
+.btn.btn-link.btn-sm.order-1.order-lg-0.me-4.me-lg-0 {
+  color: white !important;
+}
+
 hr {
   margin: 1rem 0;
   color: inherit;

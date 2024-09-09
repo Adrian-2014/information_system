@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'karyawan'){
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'karyawan') {
     header('Location: ../index.php');
     exit();
 }
@@ -54,7 +54,7 @@ $laporan = mysqli_query($connect, "SELECT * FROM laporan WHERE id_pelapor = '{$_
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="../index.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -182,6 +182,8 @@ $laporan = mysqli_query($connect, "SELECT * FROM laporan WHERE id_pelapor = '{$_
                     <form action="kirim-laporan.php" method="post" enctype="multipart/form-data" x-data="{ selectedProduct: '', stok: 0, id_pro: '', kode_produk: '' }">
                         <input type="hidden" name="pelapor" value="<?= $_SESSION['nama'] ?>">
                         <input type="hidden" name="id_pelapor" value="<?= $_SESSION['id'] ?>">
+                        <input type="hidden" name="email_pelapor" value="<?= $_SESSION['email'] ?>">
+                        <input type="hidden" name="no_telp_pelapor" value="<?= $_SESSION['no_telp'] ?>">
                         <input type="hidden" name="produk_id" :value="id_pro">
                         <input type="hidden" name="produk_stok" :value="stok">
                         <input type="hidden" name="kode_produk" :value="kode_produk">
@@ -255,17 +257,17 @@ $laporan = mysqli_query($connect, "SELECT * FROM laporan WHERE id_pelapor = '{$_
     <?php
     if (isset($_SESSION['message']) && isset($_SESSION['type'])) {
         echo "<script>
-                                                        Swal.fire({
-                                                            title: 'Sukses!',
-                                                            text: '" .
+                                                            Swal.fire({
+                                                                title: 'Sukses!',
+                                                                text: '" .
             $_SESSION['message'] .
             "',
-                                                            icon: '" .
+                                                                icon: '" .
             $_SESSION['type'] .
             "',
-                                                            confirmButtonText: 'OK'
-                                                        });
-                                                    </script>";
+                                                                confirmButtonText: 'OK'
+                                                            });
+                                                        </script>";
         unset($_SESSION['message']);
         unset($_SESSION['type']);
     }

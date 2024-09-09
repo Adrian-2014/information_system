@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin'){
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header('Location: ../index.php');
     exit();
 }
@@ -50,7 +50,7 @@ $laporan = mysqli_query($connect, 'SELECT * FROM laporan ORDER BY id DESC');
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="../index.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -126,6 +126,9 @@ $laporan = mysqli_query($connect, 'SELECT * FROM laporan ORDER BY id DESC');
 
                                         $karyawanConnect = mysqli_query($connect, "SELECT * FROM karyawan WHERE id = '$idP'");
                                         $karyawanData = mysqli_fetch_array($karyawanConnect);
+
+                                        $class = !$karyawanData ? "dipecat" : "";
+
                                         ?>
                                     <tr>
                                         <td><?= $no ?></td>
@@ -150,7 +153,7 @@ $laporan = mysqli_query($connect, 'SELECT * FROM laporan ORDER BY id DESC');
                                                         <div class="imgs">
                                                             <img src="../uploads/<?= $gambar ?>">
                                                         </div>
-                                                        <div class="isi">
+                                                        <div class="isi <?= $class; ?>">
                                                             <div class="head">
                                                                 <div class="first">Data Pelapor</div>
                                                                 <div class="last"><i class="bi bi-person-fill"></i></div>
@@ -162,11 +165,11 @@ $laporan = mysqli_query($connect, 'SELECT * FROM laporan ORDER BY id DESC');
                                                                 </div>
                                                                 <div class="mb-2">
                                                                     <label class="form-label">Email Pelapor</label>
-                                                                    <input type="text" class="form-control" value="<?= $karyawanData['email'] ?>" readonly>
+                                                                    <input type="text" class="form-control" value="<?= $lapor['email_pelapor'] ?>" readonly>
                                                                 </div>
                                                                 <div class="mb-2">
                                                                     <label class="form-label">No. Telepon</label>
-                                                                    <input type="text" class="form-control" value="<?= $karyawanData['nomor_telepon'] ?>" readonly>
+                                                                    <input type="text" class="form-control" value="<?= $lapor['no_telp_pelapor'] ?>" readonly>
                                                                 </div>
                                                             </div>
                                                         </div>

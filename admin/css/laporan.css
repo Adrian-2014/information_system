@@ -1,6 +1,7 @@
 :root {
     --main1: rgb(0, 162, 255);
     --main2: rgb(0, 223, 226);
+    --red: rgba(255, 0, 0, 0.6);
 }
 
 *,
@@ -116,6 +117,26 @@ html {
 
                                 .form-control {
                                     height: 2.1rem !important;
+                                }
+                            }
+                        }
+                    }
+
+                    .isi.dipecat {
+                        border: 2.5px solid var(--red) !important;
+
+                        .head {
+                            border-bottom: 2px solid var(--red);
+
+                        }
+
+                        .main {
+
+                            .mb-2 {
+
+                                .form-control {
+                                    height: 2.1rem !important;
+                                    border-color: var(--red) !important;
                                 }
                             }
                         }

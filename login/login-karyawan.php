@@ -16,7 +16,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['nama'] = $user['nama'];
         $_SESSION['email'] = $user['email'];
         $_SESSION['id'] = $user['id'];
+        $_SESSION['no_telp'] = $user['nomor_telepon'];
         $_SESSION['role'] = 'karyawan';
+
         $_SESSION['message'] = "Login berhasil sebagai Karyawan!";
         $_SESSION['type'] = "success";
         header("Location: ../karyawan/index.php");
