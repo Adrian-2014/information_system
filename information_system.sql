@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 06, 2024 at 12:46 PM
+-- Generation Time: Sep 09, 2024 at 03:46 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -39,7 +39,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `nama`, `email`, `password`) VALUES
-(1, 'adminku', 'adminku@gmail.com', '111');
+(1, 'Adrians', 'adminku@gmail.com', '111');
 
 -- --------------------------------------------------------
 
@@ -74,6 +74,8 @@ CREATE TABLE `laporan` (
   `id` int NOT NULL,
   `pelapor` varchar(30) NOT NULL,
   `id_pelapor` varchar(30) NOT NULL,
+  `email_pelapor` varchar(50) NOT NULL,
+  `no_telp_pelapor` varchar(50) NOT NULL,
   `produk` varchar(30) NOT NULL,
   `kode_produk` varchar(30) NOT NULL,
   `terjual` varchar(30) NOT NULL,
@@ -85,8 +87,9 @@ CREATE TABLE `laporan` (
 -- Dumping data for table `laporan`
 --
 
-INSERT INTO `laporan` (`id`, `pelapor`, `id_pelapor`, `produk`, `kode_produk`, `terjual`, `tanggal_laporan`, `tanggal_ditambahkan`) VALUES
-(5, 'Rafi Ardian Saputra', '1', 'Silver Queen', '97HSG5', '5', '2024-09-06', '2024-09-06 12:08:36');
+INSERT INTO `laporan` (`id`, `pelapor`, `id_pelapor`, `email_pelapor`, `no_telp_pelapor`, `produk`, `kode_produk`, `terjual`, `tanggal_laporan`, `tanggal_ditambahkan`) VALUES
+(1, 'Rafi Ardian Saputra', '1', 'rafi@gmail.com', '082134756692', 'Tisu', 'a1234b', '10', '2024-09-09', '2024-09-09 02:22:08'),
+(2, 'Seto', '4', 'setio4nj4y@gmail.com', '00000000000', 'Pasta Gigi', '1y6rrv', '5', '2024-09-05', '2024-09-09 02:25:08');
 
 -- --------------------------------------------------------
 
@@ -109,10 +112,13 @@ CREATE TABLE `produk` (
 
 INSERT INTO `produk` (`id`, `nama`, `kode`, `stok`, `harga`, `gambar`) VALUES
 (1, 'Coklat Mr. Beast', '0987A5', '75', '25000', 'Mr Beast chocolate_1725455022.jpeg'),
-(2, 'Silver Queen', '97HSG5', '95', '25000', 'silver-queen_1725455792.jpg'),
-(3, 'Doritos', 'Z5VV4N', '200', '12000', 'doritos_1725455974.jpg'),
+(7, 'Pasta Gigi', '1y6rrv', '40', '13000', 'pasta gigi_1725847257.jpg'),
 (4, 'Cornetto', '3AB345S', '135', '5000', 'cornetto_1725501488.jpg'),
-(5, 'Minyak Goreng', '755GF1', '40', '21000', 'minyak_1725607087.jpg');
+(5, 'Minyak Goreng', '755GF1', '50', '21000', 'minyak_1725607087.jpg'),
+(2, 'Silver Queen', '97HSG5', '120', '25000', 'silver-queen_1725455792.jpg'),
+(8, 'Tisu', 'a1234b', '30', '5000', 'tisu_1725847443.jpg'),
+(6, 'Indomie Goreng', 'f79ge4', '20', '20000', 'indomie_1725846915.jpeg'),
+(3, 'Doritos', 'Z5VV4N', '0', '12000', 'doritos_1725455974.jpg');
 
 --
 -- Indexes for dumped tables
@@ -141,8 +147,8 @@ ALTER TABLE `laporan`
 -- Indexes for table `produk`
 --
 ALTER TABLE `produk`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `kode` (`kode`);
+  ADD PRIMARY KEY (`kode`) USING BTREE,
+  ADD UNIQUE KEY `UNIK` (`id`) USING BTREE;
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -158,19 +164,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `laporan`
 --
 ALTER TABLE `laporan`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
