@@ -12,7 +12,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'karyawan'){
 include '../conn.php';
 
 $products = mysqli_query($connect, 'SELECT * FROM produk ORDER BY id DESC');
-$laporan = mysqli_query($connect, 'SELECT * FROM laporan ORDER BY id DESC');
+$laporan = mysqli_query($connect, "SELECT * FROM laporan WHERE id_pelapor = '{$_SESSION['id']}' ORDER BY id DESC");
 
 ?>
 

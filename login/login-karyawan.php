@@ -14,6 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (mysqli_num_rows($result) == 1) {
         $user = mysqli_fetch_assoc($result);
         $_SESSION['nama'] = $user['nama'];
+        $_SESSION['email'] = $user['email'];
         $_SESSION['id'] = $user['id'];
         $_SESSION['role'] = 'karyawan';
         $_SESSION['message'] = "Login berhasil sebagai Karyawan!";

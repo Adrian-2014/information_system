@@ -33,6 +33,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'karyawan'){
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
 <body class="sb-nav-fixed">
@@ -144,7 +145,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'karyawan'){
                                         <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Data <?= $product['nama'] ?></h1>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="update-produk.php" method="post" enctype="multipart/form-data">
+                                        <form action="update-produk.php" method="post" enctype="multipart/form-data" x-data="{stok:'<?= $product['stok'] ?>'}">
                                             <input type="hidden" name="id" value="<?= $product['id'] ?>">
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1" class="form-label">Nama Produk</label>
@@ -152,7 +153,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'karyawan'){
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1" class="form-label">Kode Produk</label>
-                                                <input type="text" class="form-control" name="kode" placeholder="kode produk.."required value="<?= $product['kode'] ?>">
+                                                <input type="text" class="form-control code" name="kode" placeholder="kode produk.."required value="<?= $product['kode'] ?>" maxlength="10">
                                             </div>
                                             <div class="mb-3 special">
                                                 <label for="exampleFormControlInput1" class="form-label">Harga Produk</label>
@@ -165,7 +166,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'karyawan'){
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1" class="form-label">Stok</label>
-                                                <input type="number" class="form-control" name="stok" placeholder="stok produk.."required value="<?= $product['stok'] ?>">
+                                                <input type="number" class="form-control" name="stok" x-model="stok" placeholder="stok produk.."required value="<?= $product['stok'] ?>" min="1" x-on:keydown.prevent>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="exampleFormControlInput1" class="form-label">gambar Produk</label>
@@ -198,14 +199,14 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'karyawan'){
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Produk</h1>
                 </div>
                 <div class="modal-body">
-                    <form action="tambah-produk.php" method="post" enctype="multipart/form-data">
+                    <form action="tambah-produk.php" method="post" enctype="multipart/form-data" x-data="{stok:'1'}">
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Nama Produk</label>
                             <input type="text" class="form-control" name="nama" placeholder="nama produk.." required>
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Kode Produk</label>
-                            <input type="text" class="form-control" name="kode" placeholder="kode produk.."required>
+                            <input type="text" class="form-control code" name="kode" placeholder="kode produk.."required maxlength="10">
                         </div>
                         <div class="mb-3 special">
                             <label for="exampleFormControlInput1" class="form-label">Harga Produk</label>
@@ -218,7 +219,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'karyawan'){
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Stok</label>
-                            <input type="number" class="form-control" name="stok" placeholder="stok produk.."required>
+                            <input type="number" class="form-control" x-model="stok" name="stok" placeholder="stok produk.."required min="1" x-on:keydown.prevent>
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">gambar Produk</label>
@@ -254,10 +255,8 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'karyawan'){
     if (isset($_SESSION['message']) && isset($_SESSION['type'])) {
         echo "<script>
             Swal.fire({
-                title: 'Sukses!',
-                text: '" .
-            $_SESSION['message'] .
-            "',
+                title: '". $_SESSION['head'] ."',
+                text: '" . $_SESSION['message'] . "',
                 icon: '" .
             $_SESSION['type'] .
             "',

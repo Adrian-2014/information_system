@@ -69,6 +69,10 @@ $laporan = mysqli_query($connect, 'SELECT * FROM laporan ORDER BY id DESC');
                             <div class="sb-nav-link-icon"><i class="fas fa-file-word"></i></div>
                             Laporan
                         </a>
+                        <a class="nav-link" href="produk.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-cube"></i></div>
+                            Produk
+                        </a>
                     </div>
                 </div>
             </nav>

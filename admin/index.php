@@ -32,6 +32,7 @@ $karyawan = mysqli_query($connect, 'SELECT * FROM karyawan ORDER BY id DESC');
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.12.4/dist/sweetalert2.min.css">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
 <body class="sb-nav-fixed">
@@ -68,6 +69,10 @@ $karyawan = mysqli_query($connect, 'SELECT * FROM karyawan ORDER BY id DESC');
                         <a class="nav-link" href="laporan.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-file-word"></i></div>
                             Laporan
+                        </a>
+                        <a class="nav-link" href="produk.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-cube"></i></div>
+                            Produk
                         </a>
                     </div>
                 </div>
@@ -185,7 +190,7 @@ $karyawan = mysqli_query($connect, 'SELECT * FROM karyawan ORDER BY id DESC');
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="exampleFormControlInput1" class="form-label">Usia</label>
-                                                            <input type="number" class="form-control" name="usia" placeholder="usia.."required value="<?= $work['usia'] ?>">
+                                                            <input type="number" class="form-control" name="usia" placeholder="usia.." required value="<?= $work['usia'] ?>" x-on:keydown.prevent min="18">
                                                         </div>
                                                         <div class="mb-1 mt-3">
                                                             <button type="submit" class="add">
@@ -236,7 +241,7 @@ $karyawan = mysqli_query($connect, 'SELECT * FROM karyawan ORDER BY id DESC');
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Usia</label>
-                            <input type="number" class="form-control" name="usia" placeholder="usia.."required>
+                            <input type="number" class="form-control" name="usia" placeholder="usia.."required x-on:keydown.prevent min="18">
                         </div>
                         <div class="mb-1 mt-3">
                             <button type="submit" class="add">

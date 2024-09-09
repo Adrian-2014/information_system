@@ -17,6 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['role'] = 'admin';
         $_SESSION['message'] = "Login berhasil sebagai Admin!";
         $_SESSION['type'] = "success";
+        // $_SESSION['type'] = "success";
         header("Location: ../admin/index.php");
     } else {
         $_SESSION['message'] = "Login gagal. Email atau password salah.";
